@@ -1,0 +1,34 @@
+.s-map
+  display flex
+  height 100%
+
+.s-map-map
+  flex 1
+  height 100%
+
+.s-map-tweets
+  width 300px
+  border-left: 1px solid $colors['darkGrey']
+  background-color: $colors['mediumGrey']
+  overflow auto
+
+  & > p
+    padding 10px
+    line-height 1.3em
+    color: $colors['grey']
+
+.s-map-tweet
+  padding 10px
+  border-bottom: 1px solid $colors['mediumGrey']
+  background-color: $colors['white']
+
+  & + .s-map-tweet
+    border-top: 1px solid $colors['grey']
+
+.s-map-tweet-text
+  line-height 1.4em
+  color: $colors['darkGrey']
+
+.s-map-tweet-ago
+  margin 1em 0 0 0
+  color: $colors['mediumGrey']

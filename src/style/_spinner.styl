@@ -1,0 +1,22 @@
+.m-spinner
+  position relative
+  height 1em
+  width 1em
+
+  &:before, &:after
+    content ""
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    border .15em solid transparent
+    border-radius 100%
+
+  &:before
+    border-color currentColor
+    opacity .2
+
+  &:after
+    border-right-color currentColor
+    animation spin 850ms infinite linear
