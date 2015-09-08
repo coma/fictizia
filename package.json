@@ -41,10 +41,15 @@
         "gulp-open"      : "1.0",
         "gulp-plumber"   : "1.0",
         "gulp-watch"     : "4.3",
+        "jsdom"          : "6.3",
+        "mocha"          : "2.3",
+        "proxyquire"     : "1.7",
+        "should"         : "7.1",
         "watchify"       : "3.3"
     },
     "scripts"        : {
         "lint"       : "eslint src",
+        "test"       : "npm run lint && mocha",
         "postinstall": "gulp deploy",
         "start"      : "node server"
     },
