@@ -5,7 +5,9 @@ var angular    = require('angular'),
 var app = angular.module('app', [router, directives]);
 
 /*@ngInject*/
-app.config(function ($urlRouterProvider, $stateProvider) {
+app.config(function ($compileProvider, $urlRouterProvider, $stateProvider) {
+
+    $compileProvider.debugInfoEnabled(process.env.SERVER !== 'prod');
 
 	$urlRouterProvider.otherwise('/');
 

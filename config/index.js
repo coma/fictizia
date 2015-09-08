@@ -1,1 +1,1 @@
-module.exports = require(process.env.PROD ? './prod' : './local');
+module.exports = require('./' + (process.env.SERVER || 'local'));
