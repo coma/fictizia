@@ -2,6 +2,8 @@ process.env['NODE_PATH'] = __dirname + '/src';
 require('module').Module._initPaths();
 
 var config  = require('./config'),
+    fs      = require('fs'),
+    path    = require('path'),
     express = require('express'),
     app     = express(),
     server  = require('http').Server(app),
@@ -10,7 +12,7 @@ var config  = require('./config'),
 
 var twit = new Twit(config.twitter);
 
-app.use(express.static(__dirname + '/web', {
+app.use(express.static(path.join(__dirname, '/web'), {
     index: 'index.html'
 }));
 
@@ -50,6 +52,17 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('off', stop);
     socket.on('disconnect', stop);
+});
+
+var html = fs.readFileSync(path.join(__dirname, 'web', 'index.html'), {
+    encoding: 'utf8'
+});
+
+app.get('*', function (req, res) {
+
+    res
+        .set('Content-Type', 'text/html')
+        .send(html);
 });
 
 server.listen(config.port);
