@@ -17,6 +17,10 @@ mod
     .directive('ago', function () {
 
         return require('./ago');
+    })
+    .directive('sticky', function () {
+
+        return require('./sticky');
     });
 
 module.exports = mod.name;

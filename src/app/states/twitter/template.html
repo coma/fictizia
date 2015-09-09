@@ -4,7 +4,7 @@
             <places></places>
         </map>
     </div>
-    <div class="s-map-tweets">
+    <div class="s-map-tweets" sticky>
         <p ng-hide="map.tweets">Traza un rectángulo sobre el mapa para ver los tweets en esa área en tiempo real.</p>
         <ul ng-show="map.tweets">
             <li class="s-map-tweet" ng-repeat="tweet in map.tweets track by tweet.id">
