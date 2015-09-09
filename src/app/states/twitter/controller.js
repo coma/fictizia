@@ -29,7 +29,7 @@ MapController.prototype.onTweet = function (tweet) {
 
     if (this.tweets) {
 
-        this.tweets.unshift({
+        this.tweets.push({
             id    : tweet.id,
             text  : tweet.text,
             moment: moment(tweet.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en')

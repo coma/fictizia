@@ -15,9 +15,8 @@ app.config(function ($compileProvider, $locationProvider, $urlRouterProvider, $s
 
 	$stateProvider
         .state('app', require('./states'))
-        .state('app.map', require('./states/map'))
-        .state('app.favourites', require('./states/favourites'))
-        .state('app.settings', require('./states/settings'));
+        .state('app.twitter', require('./states/twitter'))
+        .state('app.about', require('./states/about'));
 });
 
 window.onGoogleLoad = function () {

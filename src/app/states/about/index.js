@@ -1,6 +1,6 @@
 module.exports = {
-    url         : '/settings',
-    controllerAs: 'settings',
+    url         : '/about',
+    controllerAs: 'about',
     controller  : require('./controller.js'),
     template    : require('./template.html')
 };
