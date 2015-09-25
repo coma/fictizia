@@ -30,9 +30,12 @@ var plumberConfig = {
 module.exports = function (dir, done) {
 
     var watched = watchify(browserify({
-        entries  : [dir.app],
-        paths    : [dir.dependencies, dir.src],
-        debug    : true
+        entries     : [dir.app],
+        paths       : [dir.dependencies, dir.src],
+        debug       : true,
+        cache       : {},
+        packageCache: {},
+        fullPaths   : true
     }));
 
     var bundle = function () {
@@ -69,20 +72,27 @@ module.exports = function (dir, done) {
 
         watch(dir.styles, function () {
 
-            gulp.start('style');
+            sequence('style');
+        });
+
+        watch(dir.assets, function () {
+
+            sequence('assets');
+        });
+
+        watch(dir.src + '/(auth|server)/**', function () {
+
+            forever.restart();
         });
     });
 
     gulp.task('run', function (done) {
 
         var forever = new Forever(dir.server, {
-            silent             : true,
-            watch              : true,
-            watchDirectory     : dir.src,
-            watchIgnorePatterns: [dir.app + '/**'],
-            outFile            : dir.logs + '/out.log',
-            errFile            : dir.logs + '/error.log',
-            pidFile            : dir.logs + '/pid'
+            silent : true,
+            outFile: dir.logs + '/out.log',
+            errFile: dir.logs + '/error.log',
+            pidFile: dir.logs + '/pid'
         });
 
         forever.on('start', function () {
